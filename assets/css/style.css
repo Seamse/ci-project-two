@@ -1,5 +1,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap');
 
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Open Sans Condensed', sans-serif;
+    min-height: 100vh;
+    background-color: #F1DFB3;
+}
+
+header {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 1em;
+    background-color: #03003A;
+}
+
+h1 {
+    font-size: 6vh;
+    color: #E5CE6B;
+}
+
+#lightbulbs {
+    display: flex;
+    justify-content: center;
+    gap: 9vw;
+    padding-top: 1em;
+    background-color: #03003A;
+    box-shadow: 0 0 3rem 3rem #03003A;
+}
+
+.fa-lightbulb {
+    font-size: 12vh;
+    color: #36454F;
 }
