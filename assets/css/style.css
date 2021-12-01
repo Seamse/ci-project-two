@@ -49,6 +49,7 @@ Game board area
 
 #game-area {
     padding-top: 6em;
+    position: relative;
 }
 
 .board-row {
@@ -110,6 +111,24 @@ Score area
 ------------------------------------------------------------*/
 
 #score-area {
-    display: flex;
-    justify-content: flex-end;
+    position: absolute;
+    left: 75%;
+    bottom: 30%;
+}
+
+.scores {
+    font-size: 3vh;
+    font-weight: bold;
+}
+
+#win {
+    color: green;
+}
+
+#loss {
+    color: red;
+}
+
+#high-score {
+    color: royalblue;
 }
