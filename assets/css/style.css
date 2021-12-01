@@ -121,7 +121,7 @@ Score area
 }
 
 .scores {
-    font-size: 3vh;
+    font-size: larger;
     font-weight: bold;
 }
 
@@ -145,10 +145,11 @@ footer {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    gap: 3vw;
     background-color: rgba(54, 69, 79, 0.8);
     color: #F1DFB3;
     flex-grow: 1;
-    font-size: larger;
+    font-size: large;
 }
 
 #feedback-red {
@@ -161,4 +162,52 @@ footer {
     color: white;
     text-shadow: 2px 2px 2px black, 0 0 2px #03003A;
     font-weight: bold;
+}
+
+/*------------------------------------------------------------
+Media Queries
+------------------------------------------------------------*/
+
+/*------------------------------------------------------------
+Screen sizes 1150px wide and down
+------------------------------------------------------------*/
+
+@media screen and (max-width:1150px) {
+
+    #score-area {
+        position: static;
+        padding-left: 3rem;
+    }
+}
+
+/*------------------------------------------------------------
+Screen sizes 450px wide and down
+------------------------------------------------------------*/
+
+@media screen and (max-width:450px) {
+
+    .feedback {
+        height: 40px;
+        width: 40px;
+    }
+
+    .feedback-circle {
+        height: 13px;
+        width: 13px;
+    }
+
+    .input-box {
+        height: 40px;
+        width: 200px;
+    }
+
+    .input-box-circle {
+        height: 34px;
+        width: 34px;
+    }
+
+    button {
+        height: 40px;
+        width: 40px;
+    }
 }
