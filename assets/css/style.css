@@ -61,11 +61,11 @@ Game board area
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    align-items: center;
     height: 60px;
     width: 60px;
     border: 2px solid #36454F;
     border-radius: 20%;
-    padding-top: 5px;
 }
 
 .feedback-circle {
@@ -81,12 +81,13 @@ Game board area
     border: 2px solid #36454F;
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
     border-radius: 5%;
 }
 
 .input-box-circle {
-    height: 56px;
-    width: 56px;
+    height: 54px;
+    width: 54px;
     border: 1px solid #03003A;
     border-radius: 50%;
 }
@@ -102,4 +103,13 @@ button {
 
 .fa-plug {
     font-size: 200%;
+}
+
+/*------------------------------------------------------------
+Score area
+------------------------------------------------------------*/
+
+#score-area {
+    display: flex;
+    justify-content: flex-end;
 }
