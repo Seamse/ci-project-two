@@ -90,7 +90,7 @@ Game board area
     border-radius: 5%;
 }
 
-.input-box-circle {
+.input-circle {
     height: 54px;
     width: 54px;
     border: 1px solid #03003A;
@@ -201,7 +201,7 @@ Screen sizes 450px wide and down
         width: 200px;
     }
 
-    .input-box-circle {
+    .input-circle {
         height: 34px;
         width: 34px;
     }
