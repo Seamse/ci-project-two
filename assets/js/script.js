@@ -123,6 +123,14 @@ function buttonClick() {
         feedbackOne[i].style.backgroundColor = feedback[i];
     }
 
+    let lights = document.getElementsByClassName('fa-lightbulb');
+
+    if (feedback[0] === 'rgb(255, 0, 0)' && feedback[1] === 'rgb(255, 0, 0)' && feedback[2] === 'rgb(255, 0, 0)' && feedback[3] === 'rgb(255, 0, 0)') {
+        for (i = 0; i < lights.length; i++) {
+            lights[i].style.color = correctAnswer[i];
+        }
+    }
+
     firstButton.removeEventListener("click", buttonClick);
 }
 
