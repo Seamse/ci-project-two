@@ -14,12 +14,14 @@ let submitColors = ['rgb(255, 17, 194)', 'rgb(137, 17, 255)', 'rgb(0, 94, 248)',
 
 let input = document.getElementsByClassName('input-circle');
 for (i = 0; i < input.length; i++) {
-    input[i].addEventListener("click", function changeColor() {
-        color = submitColors.shift();
-        submitColors.push(color);
+    input[i].addEventListener("click", changeColor)
+}
 
-        this.style.background = color;
-    });
+function changeColor() {
+
+    color = submitColors.shift();
+    submitColors.push(color);
+    this.style.background = color;
 }
 
 let circleList = [];
@@ -33,17 +35,16 @@ for (i = 0; i < firstRow.length; i++) {
 }
 
 function checkCircleClicks(element, plug) {
-    if (element.getAttribute('disabled-button') === "false") {
+    if (element.getAttribute('disabled') === "false") {
 
         console.log(element.id);
         if (circleList.indexOf(element.id) > -1) {
-            console.log("success");
+
         } else {
             circleList.push(element.id);
             console.log(circleList);
-            element.setAttribute('disabled-button', true);
+            element.setAttribute('disabled', true);
         }
-
         if (circleList.length === firstRow.length) {
             plug.style.backgroundColor = 'rgb(229, 206, 107)';
             plug.style.boxShadow = '0 0 5px rgb(3, 0, 58)';
@@ -52,9 +53,70 @@ function checkCircleClicks(element, plug) {
     }
 }
 
+function shuffle(array) {
+    let currentIndex = array.length,
+        randomIndex;
 
+    while (currentIndex != 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
 
+        [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex], array[currentIndex]
+        ];
+    }
+    return array;
+}
 
-document.getElementById('row1-button').addEventListener("click", function () {
-    console.log(document.getElementById('i1-1').style.backgroundColor);
-})
+let feedback = [];
+
+firstButton.addEventListener("click", buttonClick);
+
+function buttonClick() {
+    for (i = 0; i < firstRow.length; i++) {
+        firstRow[i].removeEventListener("click", changeColor);
+    }
+    userAnswer.push(document.getElementById('i1-1').style.backgroundColor);
+    userAnswer.push(document.getElementById('i1-2').style.backgroundColor);
+    userAnswer.push(document.getElementById('i1-3').style.backgroundColor);
+    userAnswer.push(document.getElementById('i1-4').style.backgroundColor);
+    console.log(userAnswer);
+
+    if (userAnswer[0] === correctAnswer[0]) {
+        feedback.push('rgb(255, 0, 0)');
+    }
+
+    if (userAnswer[0] === correctAnswer[1] || userAnswer[0] === correctAnswer[2] || userAnswer[0] === correctAnswer[3]) {
+        feedback.push('rgb(255, 255, 255)');
+    }
+
+    if (userAnswer[1] === correctAnswer[1]) {
+        feedback.push('rgb(255, 0, 0)');
+    }
+
+    if (userAnswer[1] === correctAnswer[0] || userAnswer[1] === correctAnswer[2] || userAnswer[1] === correctAnswer[3]) {
+        feedback.push('rgb(255, 255, 255)');
+    }
+
+    if (userAnswer[2] === correctAnswer[2]) {
+        feedback.push('rgb(255, 0, 0)');
+    }
+
+    if (userAnswer[2] === correctAnswer[0] || userAnswer[2] === correctAnswer[1] || userAnswer[2] === correctAnswer[3]) {
+        feedback.push('rgb(255, 255, 255)');
+    }
+
+    if (userAnswer[3] === correctAnswer[3]) {
+        feedback.push('rgb(255, 0, 0)');
+    }
+
+    if (userAnswer[3] === correctAnswer[0] || userAnswer[3] === correctAnswer[1] || userAnswer[3] === correctAnswer[2]) {
+        feedback.push('rgb(255, 255, 255)');
+    }
+
+    shuffle(feedback);
+    console.log(feedback);
+    firstButton.removeEventListener("click", buttonClick);
+}
+
+console.log(correctAnswer);
