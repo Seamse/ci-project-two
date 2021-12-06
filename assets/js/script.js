@@ -116,7 +116,16 @@ function buttonClick() {
 
     shuffle(feedback);
     console.log(feedback);
+
+    let feedbackOne = document.getElementsByClassName('feedback1');
+
+    for (i = 0; i < feedbackOne.length; i++) {
+        feedbackOne[i].style.backgroundColor = feedback[i];
+    }
+
     firstButton.removeEventListener("click", buttonClick);
 }
+
+
 
 console.log(correctAnswer);
