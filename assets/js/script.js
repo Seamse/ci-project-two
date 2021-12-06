@@ -12,9 +12,9 @@ for (i = 0; i < 4; i++) {
 
 let submitColors = ['rgb(255, 17, 194)', 'rgb(137, 17, 255)', 'rgb(0, 94, 248)', 'rgb(31, 215, 61)', 'rgb(255, 217, 102)', 'rgb(255, 136, 0)'];
 
-let input = document.getElementsByClassName('input-circle');
-for (i = 0; i < input.length; i++) {
-    input[i].addEventListener("click", changeColor)
+let inputs = document.getElementsByClassName('input-circle');
+for (input of inputs) {
+    input.addEventListener("click", changeColor)
 }
 
 function changeColor() {
@@ -48,6 +48,7 @@ function checkCircleClicks(element, plug) {
         if (circleList.length === firstRow.length) {
             plug.style.backgroundColor = 'rgb(229, 206, 107)';
             plug.style.boxShadow = '0 0 5px rgb(3, 0, 58)';
+            firstButton.addEventListener("click", buttonClick);
             circleList = [];
         }
     }
@@ -68,20 +69,30 @@ function shuffle(array) {
     return array;
 }
 
+function hasDuplicates(array) {
+    return (new Set(array)).size !== array.length;
+}
+
 let feedback = [];
 
-firstButton.addEventListener("click", buttonClick);
-
 function buttonClick() {
-    for (i = 0; i < firstRow.length; i++) {
-        firstRow[i].removeEventListener("click", changeColor);
-    }
+
     userAnswer.push(document.getElementById('i1-1').style.backgroundColor);
     userAnswer.push(document.getElementById('i1-2').style.backgroundColor);
     userAnswer.push(document.getElementById('i1-3').style.backgroundColor);
     userAnswer.push(document.getElementById('i1-4').style.backgroundColor);
     console.log(userAnswer);
 
+    if (hasDuplicates(userAnswer) === true) {
+        alert('Please avoid duplicate colours');
+        userAnswer = [];
+    } else {
+        for (i = 0; i < firstRow.length; i++) {
+            firstRow[i].removeEventListener("click", changeColor);
+        } 
+        firstButton.removeEventListener("click", buttonClick);
+    }
+    
     if (userAnswer[0] === correctAnswer[0]) {
         feedback.push('rgb(255, 0, 0)');
     }
@@ -130,8 +141,6 @@ function buttonClick() {
             lights[i].style.color = correctAnswer[i];
         }
     }
-
-    firstButton.removeEventListener("click", buttonClick);
 }
 
 
