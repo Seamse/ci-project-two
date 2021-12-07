@@ -154,13 +154,13 @@ footer {
 
 #feedback-red {
     color: red;
-    text-shadow: 2px 2px 2px black, 0 0 2px #03003A;
+    text-shadow: 2px 2px 2px black, 0 0 5px #03003A;
     font-weight: bold;
 }
 
 #feedback-white {
     color: white;
-    text-shadow: 2px 2px 2px black, 0 0 2px #03003A;
+    text-shadow: 2px 2px 2px black, 0 0 5px #03003A;
     font-weight: bold;
 }
 

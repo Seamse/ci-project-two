@@ -1,39 +1,49 @@
-let colors = ['rgb(255, 17, 194)', 'rgb(137, 17, 255)', 'rgb(0, 94, 248)', 'rgb(31, 215, 61)', 'rgb(255, 217, 102)', 'rgb(255, 136, 0)'];
+/* Six colours from which the computer must generate the 'secret code'. */
+const colors = ['rgb(255, 17, 194)', 'rgb(137, 17, 255)', 'rgb(0, 94, 248)', 'rgb(31, 215, 61)', 'rgb(255, 217, 102)', 'rgb(255, 136, 0)'];
 
-let correctAnswer = [];
+const correctAnswer = [];
 let userAnswer = [];
 
-
-for (i = 0; i < 4; i++) {
+/* Generates the 4 random colours which will form the 'secret code' without using duplicate colours. */
+for (let i = 0; i < 4; i++) {
     let randomColor = (Math.floor(Math.random() * colors.length));
     correctAnswer.push(colors[randomColor]);
     colors.splice(randomColor, 1);
 }
 
-let submitColors = ['rgb(255, 17, 194)', 'rgb(137, 17, 255)', 'rgb(0, 94, 248)', 'rgb(31, 215, 61)', 'rgb(255, 217, 102)', 'rgb(255, 136, 0)'];
+/* Six colours from which the user can choose to make their own 4 colour code. */
+const submitColors = ['rgb(255, 17, 194)', 'rgb(137, 17, 255)', 'rgb(0, 94, 248)', 'rgb(31, 215, 61)', 'rgb(255, 217, 102)', 'rgb(255, 136, 0)'];
 
-let inputs = document.getElementsByClassName('input-circle');
-for (input of inputs) {
+const inputs = document.getElementsByClassName('input-circle');
+for (let input of inputs) {
     input.addEventListener("click", changeColor)
 }
 
+/**
+ * Function that allows the user to change the circle's (background)colour.
+ */
 function changeColor() {
 
-    color = submitColors.shift();
+    const color = submitColors.shift();
     submitColors.push(color);
     this.style.background = color;
 }
 
 let circleList = [];
-let firstRow = document.getElementsByClassName('row1');
-let firstButton = document.getElementById('row1-button');
+const firstRow = document.getElementsByClassName('row1');
+const firstButton = document.getElementById('row1-button');
 
-for (i = 0; i < firstRow.length; i++) {
+for (let i = 0; i < firstRow.length; i++) {
     firstRow[i].addEventListener("click", function () {
         checkCircleClicks(this, firstButton);
     });
 }
 
+/**
+ * Function that 'checks' if all four input circles have received an input before lighting up and activating the submit button.
+ * @param {} element (this is the div in the shape of a circle)
+ * @param {} plug (this is the submit button)
+ */
 function checkCircleClicks(element, plug) {
     if (element.getAttribute('disabled') === "false") {
 
@@ -54,6 +64,13 @@ function checkCircleClicks(element, plug) {
     }
 }
 
+/**
+ * Function that 'shuffles' an array into a random order.
+ * Used for the computer feedback to prevent the user from guessing the correct 'secret code' too easily.
+ * (copied directly from stackoverflow, please see the readMe for the link)
+ * @param {*} array 
+ * @returns 
+ */
 function shuffle(array) {
     let currentIndex = array.length,
         randomIndex;
@@ -69,12 +86,23 @@ function shuffle(array) {
     return array;
 }
 
+/**
+ * Function that double checks if an array has duplicates.
+ * Used to prevent the user from entering duplicate colours in their 'secret code'.
+ * (copied directly from stackoverflow, please see the readMe for the link)
+ * @param {*} array 
+ * @returns 
+ */
 function hasDuplicates(array) {
     return (new Set(array)).size !== array.length;
 }
 
-let feedback = [];
+const feedback = [];
 
+/**
+ * Function that submits the user's 'secret code' checks their answer and returns feedback based on which colours were correct and/or in the correct position.
+ * When all colours match the computer's 'secret code' and have the correct position, the lights will 'turn on'.
+ */
 function buttonClick() {
 
     userAnswer.push(document.getElementById('i1-1').style.backgroundColor);
@@ -87,12 +115,12 @@ function buttonClick() {
         alert('Please avoid duplicate colours');
         userAnswer = [];
     } else {
-        for (i = 0; i < firstRow.length; i++) {
+        for (let i = 0; i < firstRow.length; i++) {
             firstRow[i].removeEventListener("click", changeColor);
-        } 
+        }
         firstButton.removeEventListener("click", buttonClick);
     }
-    
+
     if (userAnswer[0] === correctAnswer[0]) {
         feedback.push('rgb(255, 0, 0)');
     }
@@ -128,16 +156,16 @@ function buttonClick() {
     shuffle(feedback);
     console.log(feedback);
 
-    let feedbackOne = document.getElementsByClassName('feedback1');
+    const feedbackOne = document.getElementsByClassName('feedback1');
 
-    for (i = 0; i < feedbackOne.length; i++) {
+    for (let i = 0; i < feedbackOne.length; i++) {
         feedbackOne[i].style.backgroundColor = feedback[i];
     }
 
-    let lights = document.getElementsByClassName('fa-lightbulb');
+    const lights = document.getElementsByClassName('fa-lightbulb');
 
     if (feedback[0] === 'rgb(255, 0, 0)' && feedback[1] === 'rgb(255, 0, 0)' && feedback[2] === 'rgb(255, 0, 0)' && feedback[3] === 'rgb(255, 0, 0)') {
-        for (i = 0; i < lights.length; i++) {
+        for (let i = 0; i < lights.length; i++) {
             lights[i].style.color = correctAnswer[i];
         }
     }
