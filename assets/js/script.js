@@ -542,16 +542,29 @@ function addLosses() {
     document.getElementById('loss').innerText = sessionStorage.loss;
 }
 
+/**
+ * Counts how many row buttons have been used to keep track of a potential high score when winning the game
+ */
 function incrementCount() {
 
     let oldCount = parseInt(clickCount);
     clickCount = ++oldCount;
     console.log(clickCount);
-
 }
 
-document.getElementById('win').innerText = sessionStorage.wins;
-document.getElementById('loss').innerText = sessionStorage.loss;
+if (sessionStorage.wins === undefined) {
+    document.getElementById('win').innerText = "none";
+} else {
+    document.getElementById('win').innerText = sessionStorage.wins;
+}
+
+if (sessionStorage.loss === undefined) {
+    document.getElementById('loss').innerText = "none";
+} else {
+    document.getElementById('loss').innerText = sessionStorage.loss;
+}
+
 document.getElementById('high-score').innerText = sessionStorage.getItem("highScore");
+
 
 console.log(correctAnswer);
