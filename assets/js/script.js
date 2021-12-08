@@ -20,7 +20,7 @@ for (let input of inputs) {
 }
 
 /**
- * Function that allows the user to change the circle's (background)colour.
+ * Allows the user to change the circle's (background)colour.
  */
 function changeColor() {
 
@@ -35,16 +35,16 @@ const firstButton = document.getElementById('row1-button');
 
 for (let i = 0; i < firstRow.length; i++) {
     firstRow[i].addEventListener("click", function () {
-        checkCircleClicks(this, firstButton);
+        checkCircleClicks(this, firstButton, firstRow);
     });
 }
 
 /**
- * Function that 'checks' if all four input circles have received an input before lighting up and activating the submit button.
+ * Checks if all four input circles have received an input before lighting up and activating the submit button.
  * @param {} element (this is the div in the shape of a circle)
  * @param {} plug (this is the submit button)
  */
-function checkCircleClicks(element, plug) {
+function checkCircleClicks(element, plug, row) {
     if (element.getAttribute('disabled') === "false") {
 
         console.log(element.id);
@@ -55,17 +55,17 @@ function checkCircleClicks(element, plug) {
             console.log(circleList);
             element.setAttribute('disabled', true);
         }
-        if (circleList.length === firstRow.length) {
+        if (circleList.length === row.length) {
             plug.style.backgroundColor = 'rgb(229, 206, 107)';
             plug.style.boxShadow = '0 0 5px rgb(3, 0, 58)';
-            firstButton.addEventListener("click", buttonClick);
+            plug.addEventListener("click", buttonClick);
             circleList = [];
         }
     }
 }
 
 /**
- * Function that 'shuffles' an array into a random order.
+ * Shuffles an array into a random order.
  * Used for the computer feedback to prevent the user from guessing the correct 'secret code' too easily.
  * (copied directly from stackoverflow, please see the readMe for the link)
  * @param {*} array 
@@ -87,7 +87,7 @@ function shuffle(array) {
 }
 
 /**
- * Function that double checks if an array has duplicates.
+ * Checks if an array has duplicates.
  * Used to prevent the user from entering duplicate colours in their 'secret code'.
  * (copied directly from stackoverflow, please see the readMe for the link)
  * @param {*} array 
@@ -100,7 +100,7 @@ function hasDuplicates(array) {
 const feedback = [];
 
 /**
- * Function that submits the user's 'secret code' checks their answer and returns feedback based on which colours were correct and/or in the correct position.
+ * Submits the user's 'secret code' checks their answer and returns feedback based on which colours were correct and/or in the correct position.
  * When all colours match the computer's 'secret code' and have the correct position, the lights will 'turn on'.
  */
 function buttonClick() {
@@ -168,9 +168,23 @@ function buttonClick() {
         for (let i = 0; i < lights.length; i++) {
             lights[i].style.color = correctAnswer[i];
         }
+        calculateWins();
     }
 }
 
+/**
+ * Adds 1 to the current win score
+ */
+function calculateWins() {
 
+    if (sessionStorage.wins) {
+        sessionStorage.wins = Number(sessionStorage.wins) + 1;
+    } else {
+        sessionStorage.wins = 0
+    }
+    document.getElementById('win').innerText = sessionStorage.wins;
+}
+
+document.getElementById('win').innerText = sessionStorage.wins;
 
 console.log(correctAnswer);

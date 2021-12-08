@@ -22,7 +22,6 @@ Header and Lightbulbs section
 header {
     display: flex;
     justify-content: space-around;
-    padding-top: 1em;
     background-color: #03003A;
 }
 
@@ -154,13 +153,13 @@ footer {
 
 #feedback-red {
     color: red;
-    text-shadow: 2px 2px 2px black, 0 0 5px #03003A;
+    text-shadow: 2px 2px 0 black, 2px 2px 3px #03003A, 0 0 10px black;
     font-weight: bold;
 }
 
 #feedback-white {
     color: white;
-    text-shadow: 2px 2px 2px black, 0 0 5px #03003A;
+    text-shadow: 2px 2px 0 black, 2px 2px 3px #03003A, 0 0 10px black;
     font-weight: bold;
 }
 
