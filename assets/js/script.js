@@ -29,9 +29,13 @@ function changeColor() {
     this.style.background = color;
 }
 
+/*--------------------------------------------------------------------------- ROW 1 --------------------------------------------------------------------------- */
+
 let circleList = [];
+let feedback = [];
 const firstRow = document.getElementsByClassName('row1');
 const firstButton = document.getElementById('row1-button');
+const feedbackOne = document.getElementsByClassName('feedback1');
 
 for (let i = 0; i < firstRow.length; i++) {
     firstRow[i].addEventListener("click", function () {
@@ -58,7 +62,9 @@ function checkCircleClicks(element, plug, row) {
         if (circleList.length === row.length) {
             plug.style.backgroundColor = 'rgb(229, 206, 107)';
             plug.style.boxShadow = '0 0 5px rgb(3, 0, 58)';
-            plug.addEventListener("click", buttonClick);
+            plug.addEventListener("click", function () {
+                buttonClick(firstRow, firstButton, feedbackOne);
+            });
             circleList = [];
         }
     }
@@ -97,28 +103,28 @@ function hasDuplicates(array) {
     return (new Set(array)).size !== array.length;
 }
 
-const feedback = [];
-
 /**
  * Submits the user's 'secret code' checks their answer and returns feedback based on which colours were correct and/or in the correct position.
  * When all colours match the computer's 'secret code' and have the correct position, the lights will 'turn on'.
+ * @param {*} row 
+ * @param {*} plug 
+ * @param {*} reply 
  */
-function buttonClick() {
+function buttonClick(row, plug, reply) {
 
-    userAnswer.push(document.getElementById('i1-1').style.backgroundColor);
-    userAnswer.push(document.getElementById('i1-2').style.backgroundColor);
-    userAnswer.push(document.getElementById('i1-3').style.backgroundColor);
-    userAnswer.push(document.getElementById('i1-4').style.backgroundColor);
+    for (let i = 0; i < row.length; i++) {
+        userAnswer.push(row[i].style.backgroundColor);
+    }
     console.log(userAnswer);
 
     if (hasDuplicates(userAnswer) === true) {
         alert('Please avoid duplicate colours');
         userAnswer = [];
     } else {
-        for (let i = 0; i < firstRow.length; i++) {
-            firstRow[i].removeEventListener("click", changeColor);
+        for (let i = 0; i < row.length; i++) {
+            row[i].removeEventListener("click", changeColor);
         }
-        firstButton.removeEventListener("click", buttonClick);
+        plug.removeEventListener("click", buttonClick);
     }
 
     if (userAnswer[0] === correctAnswer[0]) {
@@ -156,11 +162,12 @@ function buttonClick() {
     shuffle(feedback);
     console.log(feedback);
 
-    const feedbackOne = document.getElementsByClassName('feedback1');
-
-    for (let i = 0; i < feedbackOne.length; i++) {
-        feedbackOne[i].style.backgroundColor = feedback[i];
+    for (let i = 0; i < reply.length; i++) {
+        reply[i].style.backgroundColor = feedback[i];
     }
+
+    userAnswer = [];
+    feedback = [];
 
     const lights = document.getElementsByClassName('fa-lightbulb');
 
@@ -171,6 +178,83 @@ function buttonClick() {
         calculateWins();
     }
 }
+
+/*--------------------------------------------------------------------------- ROW 2 --------------------------------------------------------------------------- */
+
+const secondRow = document.getElementsByClassName('row2');
+const secondButton = document.getElementById('row2-button');
+const feedbackTwo = document.getElementsByClassName('feedback2');
+
+
+for (let i = 0; i < secondRow.length; i++) {
+    secondRow[i].addEventListener("click", function () {
+        checkCircleClicksTwo(this, secondButton, secondRow);
+    });
+}
+
+function checkCircleClicksTwo(element, plug, row) {
+    if (element.getAttribute('disabled') === "false") {
+
+        console.log(element.id);
+        if (circleList.indexOf(element.id) > -1) {
+
+        } else {
+            circleList.push(element.id);
+            console.log(circleList);
+            element.setAttribute('disabled', true);
+        }
+        if (circleList.length === row.length) {
+            plug.style.backgroundColor = 'rgb(229, 206, 107)';
+            plug.style.boxShadow = '0 0 5px rgb(3, 0, 58)';
+            plug.addEventListener("click", function () {
+                buttonClick(secondRow, secondButton, feedbackTwo);
+            });
+            circleList = [];
+        }
+    }
+}
+
+/*--------------------------------------------------------------------------- ROW 3 --------------------------------------------------------------------------- */
+
+const thirdRow = document.getElementsByClassName('row3');
+const thirdButton = document.getElementById('row3-button');
+const feedbackThree = document.getElementsByClassName('feedback3');
+
+
+for (let i = 0; i < thirdRow.length; i++) {
+    thirdRow[i].addEventListener("click", function () {
+        checkCircleClicksThree(this, thirdButton, thirdRow);
+    });
+}
+
+function checkCircleClicksThree(element, plug, row) {
+    if (element.getAttribute('disabled') === "false") {
+
+        console.log(element.id);
+        if (circleList.indexOf(element.id) > -1) {
+
+        } else {
+            circleList.push(element.id);
+            console.log(circleList);
+            element.setAttribute('disabled', true);
+        }
+        if (circleList.length === row.length) {
+            plug.style.backgroundColor = 'rgb(229, 206, 107)';
+            plug.style.boxShadow = '0 0 5px rgb(3, 0, 58)';
+            plug.addEventListener("click", function () {
+                buttonClick(thirdRow, thirdButton, feedbackThree);
+            });
+            circleList = [];
+        }
+    }
+}
+
+/*--------------------------------------------------------------------------- ROW 4 --------------------------------------------------------------------------- */
+/*--------------------------------------------------------------------------- ROW 5 --------------------------------------------------------------------------- */
+/*--------------------------------------------------------------------------- ROW 6 --------------------------------------------------------------------------- */
+/*--------------------------------------------------------------------------- ROW 7 --------------------------------------------------------------------------- */
+/*--------------------------------------------------------------------------- ROW 8 --------------------------------------------------------------------------- */
+/*--------------------------------------------------------------------------- ROW 9 --------------------------------------------------------------------------- */
 
 /**
  * Adds 1 to the current win score
