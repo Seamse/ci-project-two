@@ -16,7 +16,7 @@ const submitColors = ['rgb(255, 17, 194)', 'rgb(137, 17, 255)', 'rgb(0, 94, 248)
 
 const inputs = document.getElementsByClassName('input-circle');
 for (let input of inputs) {
-    input.addEventListener("click", changeColor)
+    input.addEventListener("click", changeColor);
 }
 
 /**
@@ -65,7 +65,7 @@ function hasDuplicates(array) {
 /**
  * Submits the user's 'secret code' checks their answer and returns feedback based on which colours were correct and/or in the correct position.
  * When all colours match the computer's 'secret code' and have the correct position, the lights will 'turn on' and the game will restart.
- * When all 9 rows have been used but the computer's 'secret code' hasn't been guessed the user has lost and the game will reset.
+ * When all 9 rows have been used but the computer's 'secret code' hasn't been guessed the user has lost and the game will restart.
  * @param {*} row 
  * @param {*} plug 
  * @param {*} reply 
@@ -75,7 +75,6 @@ function buttonClick(row, plug, reply) {
     for (let i = 0; i < row.length; i++) {
         userAnswer.push(row[i].style.backgroundColor);
     }
-    console.log(userAnswer);
 
     if (hasDuplicates(userAnswer) === true) {
         alert('Please avoid duplicate colours');
@@ -119,13 +118,11 @@ function buttonClick(row, plug, reply) {
     }
 
     shuffle(feedback);
-    console.log(feedback);
 
     for (let i = 0; i < reply.length; i++) {
         reply[i].style.backgroundColor = feedback[i];
     }
 
-    console.log(plug.id + ' was clicked!');
     incrementCount();
     plug.disabled = true;
 
@@ -144,7 +141,7 @@ function buttonClick(row, plug, reply) {
 
         calculateWins();
         setTimeout(function () {
-            location.reload()
+            location.reload();
         }, 6000);
     }
 
@@ -152,7 +149,7 @@ function buttonClick(row, plug, reply) {
         clickCount === 9) {
         addLosses();
         setTimeout(function () {
-            location.reload()
+            location.reload();
         }, 3000);
     }
 
@@ -181,13 +178,13 @@ for (let i = 0; i < firstRow.length; i++) {
  * @param {*} row 
  */
 function checkCircleClicks(element, plug, row) {
-    if (element.getAttribute('disabled') === "false") {
+    if (element.getAttribute('data-disabled') === "false") {
 
         if (circleList.indexOf(element.id) > -1) {
 
         } else {
             circleList.push(element.id);
-            element.setAttribute('disabled', true);
+            element.setAttribute('data-disabled', true);
         }
         if (circleList.length === row.length) {
             plug.style.backgroundColor = 'rgb(229, 206, 107)';
@@ -220,13 +217,13 @@ for (let i = 0; i < secondRow.length; i++) {
  * @param {*} row 
  */
 function checkCircleClicksTwo(element, plug, row) {
-    if (element.getAttribute('disabled') === "false") {
+    if (element.getAttribute('data-disabled') === "false") {
 
         if (circleList.indexOf(element.id) > -1) {
 
         } else {
             circleList.push(element.id);
-            element.setAttribute('disabled', true);
+            element.setAttribute('data-disabled', true);
         }
         if (circleList.length === row.length) {
             plug.style.backgroundColor = 'rgb(229, 206, 107)';
@@ -259,13 +256,13 @@ for (let i = 0; i < thirdRow.length; i++) {
  * @param {*} row 
  */
 function checkCircleClicksThree(element, plug, row) {
-    if (element.getAttribute('disabled') === "false") {
+    if (element.getAttribute('data-disabled') === "false") {
 
         if (circleList.indexOf(element.id) > -1) {
 
         } else {
             circleList.push(element.id);
-            element.setAttribute('disabled', true);
+            element.setAttribute('data-disabled', true);
         }
         if (circleList.length === row.length) {
             plug.style.backgroundColor = 'rgb(229, 206, 107)';
@@ -298,13 +295,13 @@ for (let i = 0; i < fourthRow.length; i++) {
  * @param {*} row 
  */
 function checkCircleClicksFour(element, plug, row) {
-    if (element.getAttribute('disabled') === "false") {
+    if (element.getAttribute('data-disabled') === "false") {
 
         if (circleList.indexOf(element.id) > -1) {
 
         } else {
             circleList.push(element.id);
-            element.setAttribute('disabled', true);
+            element.setAttribute('data-disabled', true);
         }
         if (circleList.length === row.length) {
             plug.style.backgroundColor = 'rgb(229, 206, 107)';
@@ -337,13 +334,13 @@ for (let i = 0; i < fifthRow.length; i++) {
  * @param {*} row 
  */
 function checkCircleClicksFive(element, plug, row) {
-    if (element.getAttribute('disabled') === "false") {
+    if (element.getAttribute('data-disabled') === "false") {
 
         if (circleList.indexOf(element.id) > -1) {
 
         } else {
             circleList.push(element.id);
-            element.setAttribute('disabled', true);
+            element.setAttribute('data-disabled', true);
         }
         if (circleList.length === row.length) {
             plug.style.backgroundColor = 'rgb(229, 206, 107)';
@@ -376,13 +373,13 @@ for (let i = 0; i < sixthRow.length; i++) {
  * @param {*} row 
  */
 function checkCircleClicksSix(element, plug, row) {
-    if (element.getAttribute('disabled') === "false") {
+    if (element.getAttribute('data-disabled') === "false") {
 
         if (circleList.indexOf(element.id) > -1) {
 
         } else {
             circleList.push(element.id);
-            element.setAttribute('disabled', true);
+            element.setAttribute('data-disabled', true);
         }
         if (circleList.length === row.length) {
             plug.style.backgroundColor = 'rgb(229, 206, 107)';
@@ -415,13 +412,13 @@ for (let i = 0; i < seventhRow.length; i++) {
  * @param {*} row 
  */
 function checkCircleClicksSeven(element, plug, row) {
-    if (element.getAttribute('disabled') === "false") {
+    if (element.getAttribute('data-disabled') === "false") {
 
         if (circleList.indexOf(element.id) > -1) {
 
         } else {
             circleList.push(element.id);
-            element.setAttribute('disabled', true);
+            element.setAttribute('data-disabled', true);
         }
         if (circleList.length === row.length) {
             plug.style.backgroundColor = 'rgb(229, 206, 107)';
@@ -454,13 +451,13 @@ for (let i = 0; i < eighthRow.length; i++) {
  * @param {*} row 
  */
 function checkCircleClicksEight(element, plug, row) {
-    if (element.getAttribute('disabled') === "false") {
+    if (element.getAttribute('data-disabled') === "false") {
 
         if (circleList.indexOf(element.id) > -1) {
 
         } else {
             circleList.push(element.id);
-            element.setAttribute('disabled', true);
+            element.setAttribute('data-disabled', true);
         }
         if (circleList.length === row.length) {
             plug.style.backgroundColor = 'rgb(229, 206, 107)';
@@ -493,13 +490,13 @@ for (let i = 0; i < ninthRow.length; i++) {
  * @param {*} row 
  */
 function checkCircleClicksNine(element, plug, row) {
-    if (element.getAttribute('disabled') === "false") {
+    if (element.getAttribute('data-disabled') === "false") {
 
         if (circleList.indexOf(element.id) > -1) {
 
         } else {
             circleList.push(element.id);
-            element.setAttribute('disabled', true);
+            element.setAttribute('data-disabled', true);
         }
         if (circleList.length === row.length) {
             plug.style.backgroundColor = 'rgb(229, 206, 107)';
@@ -524,7 +521,7 @@ function calculateWins() {
     if (sessionStorage.wins) {
         sessionStorage.wins = Number(sessionStorage.wins) + 1;
     } else {
-        sessionStorage.wins = 1
+        sessionStorage.wins = 1;
     }
     document.getElementById('win').innerText = sessionStorage.wins;
 }
@@ -537,7 +534,7 @@ function addLosses() {
     if (sessionStorage.loss) {
         sessionStorage.loss = Number(sessionStorage.loss) + 1;
     } else {
-        sessionStorage.loss = 1
+        sessionStorage.loss = 1;
     }
     document.getElementById('loss').innerText = sessionStorage.loss;
 }
@@ -549,7 +546,6 @@ function incrementCount() {
 
     let oldCount = parseInt(clickCount);
     clickCount = ++oldCount;
-    console.log(clickCount);
 }
 
 if (sessionStorage.wins === undefined) {
@@ -565,6 +561,3 @@ if (sessionStorage.loss === undefined) {
 }
 
 document.getElementById('high-score').innerText = sessionStorage.getItem("highScore");
-
-
-console.log(correctAnswer);

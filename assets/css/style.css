@@ -145,21 +145,21 @@ footer {
     justify-content: space-evenly;
     align-items: center;
     gap: 3vw;
-    background-color: rgba(54, 69, 79, 0.8);
-    color: #F1DFB3;
+    background-color: #03003A;
+    color: #E5CE6B;
     flex-grow: 1;
     font-size: large;
 }
 
 #feedback-red {
     color: red;
-    text-shadow: 2px 2px 0 black, 2px 2px 3px #03003A, 0 0 10px black;
+    box-shadow: 2px 2px 0 black;
     font-weight: bold;
 }
 
 #feedback-white {
     color: white;
-    text-shadow: 2px 2px 0 black, 2px 2px 3px #03003A, 0 0 10px black;
+    box-shadow: 2px 2px 0 black;
     font-weight: bold;
 }
 
