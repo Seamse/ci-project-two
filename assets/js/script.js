@@ -29,47 +29,6 @@ function changeColor() {
     this.style.background = color;
 }
 
-/*--------------------------------------------------------------------------- ROW 1 --------------------------------------------------------------------------- */
-
-let circleList = [];
-let feedback = [];
-const firstRow = document.getElementsByClassName('row1');
-const firstButton = document.getElementById('row1-button');
-const feedbackOne = document.getElementsByClassName('feedback1');
-
-for (let i = 0; i < firstRow.length; i++) {
-    firstRow[i].addEventListener("click", function () {
-        checkCircleClicks(this, firstButton, firstRow);
-    });
-}
-
-/**
- * Checks if all four input circles have received an input before lighting up and activating the submit button.
- * @param {} element (this is the div in the shape of a circle)
- * @param {} plug (this is the submit button)
- */
-function checkCircleClicks(element, plug, row) {
-    if (element.getAttribute('disabled') === "false") {
-
-        console.log(element.id);
-        if (circleList.indexOf(element.id) > -1) {
-
-        } else {
-            circleList.push(element.id);
-            console.log(circleList);
-            element.setAttribute('disabled', true);
-        }
-        if (circleList.length === row.length) {
-            plug.style.backgroundColor = 'rgb(229, 206, 107)';
-            plug.style.boxShadow = '0 0 5px rgb(3, 0, 58)';
-            plug.addEventListener("click", function () {
-                buttonClick(firstRow, firstButton, feedbackOne);
-            });
-            circleList = [];
-        }
-    }
-}
-
 /**
  * Shuffles an array into a random order.
  * Used for the computer feedback to prevent the user from guessing the correct 'secret code' too easily.
@@ -166,9 +125,6 @@ function buttonClick(row, plug, reply) {
         reply[i].style.backgroundColor = feedback[i];
     }
 
-    userAnswer = [];
-    feedback = [];
-
     const lights = document.getElementsByClassName('fa-lightbulb');
 
     if (feedback[0] === 'rgb(255, 0, 0)' && feedback[1] === 'rgb(255, 0, 0)' && feedback[2] === 'rgb(255, 0, 0)' && feedback[3] === 'rgb(255, 0, 0)') {
@@ -176,6 +132,46 @@ function buttonClick(row, plug, reply) {
             lights[i].style.color = correctAnswer[i];
         }
         calculateWins();
+        setTimeout(function () {
+            location.reload()
+        }, 5000);
+    }
+
+    userAnswer = [];
+    feedback = [];
+}
+
+/*--------------------------------------------------------------------------- ROW 1 --------------------------------------------------------------------------- */
+
+let circleList = [];
+let feedback = [];
+const firstRow = document.getElementsByClassName('row1');
+const firstButton = document.getElementById('row1-button');
+const feedbackOne = document.getElementsByClassName('feedback1');
+
+for (let i = 0; i < firstRow.length; i++) {
+    firstRow[i].addEventListener("click", function () {
+        checkCircleClicks(this, firstButton, firstRow);
+    });
+}
+
+function checkCircleClicks(element, plug, row) {
+    if (element.getAttribute('disabled') === "false") {
+
+        if (circleList.indexOf(element.id) > -1) {
+
+        } else {
+            circleList.push(element.id);
+            element.setAttribute('disabled', true);
+        }
+        if (circleList.length === row.length) {
+            plug.style.backgroundColor = 'rgb(229, 206, 107)';
+            plug.style.boxShadow = '0 0 5px rgb(3, 0, 58)';
+            plug.addEventListener("click", function () {
+                buttonClick(firstRow, firstButton, feedbackOne);
+            });
+            circleList = [];
+        }
     }
 }
 
@@ -195,12 +191,10 @@ for (let i = 0; i < secondRow.length; i++) {
 function checkCircleClicksTwo(element, plug, row) {
     if (element.getAttribute('disabled') === "false") {
 
-        console.log(element.id);
         if (circleList.indexOf(element.id) > -1) {
 
         } else {
             circleList.push(element.id);
-            console.log(circleList);
             element.setAttribute('disabled', true);
         }
         if (circleList.length === row.length) {
@@ -230,12 +224,10 @@ for (let i = 0; i < thirdRow.length; i++) {
 function checkCircleClicksThree(element, plug, row) {
     if (element.getAttribute('disabled') === "false") {
 
-        console.log(element.id);
         if (circleList.indexOf(element.id) > -1) {
 
         } else {
             circleList.push(element.id);
-            console.log(circleList);
             element.setAttribute('disabled', true);
         }
         if (circleList.length === row.length) {
@@ -250,11 +242,202 @@ function checkCircleClicksThree(element, plug, row) {
 }
 
 /*--------------------------------------------------------------------------- ROW 4 --------------------------------------------------------------------------- */
+
+const fourthRow = document.getElementsByClassName('row4');
+const fourthButton = document.getElementById('row4-button');
+const feedbackFour = document.getElementsByClassName('feedback4');
+
+
+for (let i = 0; i < fourthRow.length; i++) {
+    fourthRow[i].addEventListener("click", function () {
+        checkCircleClicksFour(this, fourthButton, fourthRow);
+    });
+}
+
+function checkCircleClicksFour(element, plug, row) {
+    if (element.getAttribute('disabled') === "false") {
+
+        if (circleList.indexOf(element.id) > -1) {
+
+        } else {
+            circleList.push(element.id);
+            element.setAttribute('disabled', true);
+        }
+        if (circleList.length === row.length) {
+            plug.style.backgroundColor = 'rgb(229, 206, 107)';
+            plug.style.boxShadow = '0 0 5px rgb(3, 0, 58)';
+            plug.addEventListener("click", function () {
+                buttonClick(fourthRow, fourthButton, feedbackFour);
+            });
+            circleList = [];
+        }
+    }
+}
+
 /*--------------------------------------------------------------------------- ROW 5 --------------------------------------------------------------------------- */
+
+const fifthRow = document.getElementsByClassName('row5');
+const fifthButton = document.getElementById('row5-button');
+const feedbackFive = document.getElementsByClassName('feedback5');
+
+
+for (let i = 0; i < fifthRow.length; i++) {
+    fifthRow[i].addEventListener("click", function () {
+        checkCircleClicksFive(this, fifthButton, fifthRow);
+    });
+}
+
+function checkCircleClicksFive(element, plug, row) {
+    if (element.getAttribute('disabled') === "false") {
+
+        if (circleList.indexOf(element.id) > -1) {
+
+        } else {
+            circleList.push(element.id);
+            element.setAttribute('disabled', true);
+        }
+        if (circleList.length === row.length) {
+            plug.style.backgroundColor = 'rgb(229, 206, 107)';
+            plug.style.boxShadow = '0 0 5px rgb(3, 0, 58)';
+            plug.addEventListener("click", function () {
+                buttonClick(fifthRow, fifthButton, feedbackFive);
+            });
+            circleList = [];
+        }
+    }
+}
+
 /*--------------------------------------------------------------------------- ROW 6 --------------------------------------------------------------------------- */
+
+const sixthRow = document.getElementsByClassName('row6');
+const sixthButton = document.getElementById('row6-button');
+const feedbackSix = document.getElementsByClassName('feedback6');
+
+
+for (let i = 0; i < sixthRow.length; i++) {
+    sixthRow[i].addEventListener("click", function () {
+        checkCircleClicksSix(this, sixthButton, sixthRow);
+    });
+}
+
+function checkCircleClicksSix(element, plug, row) {
+    if (element.getAttribute('disabled') === "false") {
+
+        if (circleList.indexOf(element.id) > -1) {
+
+        } else {
+            circleList.push(element.id);
+            element.setAttribute('disabled', true);
+        }
+        if (circleList.length === row.length) {
+            plug.style.backgroundColor = 'rgb(229, 206, 107)';
+            plug.style.boxShadow = '0 0 5px rgb(3, 0, 58)';
+            plug.addEventListener("click", function () {
+                buttonClick(sixthRow, sixthButton, feedbackSix);
+            });
+            circleList = [];
+        }
+    }
+}
+
 /*--------------------------------------------------------------------------- ROW 7 --------------------------------------------------------------------------- */
+
+const seventhRow = document.getElementsByClassName('row7');
+const seventhButton = document.getElementById('row7-button');
+const feedbackSeven = document.getElementsByClassName('feedback7');
+
+
+for (let i = 0; i < seventhRow.length; i++) {
+    seventhRow[i].addEventListener("click", function () {
+        checkCircleClicksSeven(this, seventhButton, seventhRow);
+    });
+}
+
+function checkCircleClicksSeven(element, plug, row) {
+    if (element.getAttribute('disabled') === "false") {
+
+        if (circleList.indexOf(element.id) > -1) {
+
+        } else {
+            circleList.push(element.id);
+            element.setAttribute('disabled', true);
+        }
+        if (circleList.length === row.length) {
+            plug.style.backgroundColor = 'rgb(229, 206, 107)';
+            plug.style.boxShadow = '0 0 5px rgb(3, 0, 58)';
+            plug.addEventListener("click", function () {
+                buttonClick(seventhRow, seventhButton, feedbackSeven);
+            });
+            circleList = [];
+        }
+    }
+}
+
 /*--------------------------------------------------------------------------- ROW 8 --------------------------------------------------------------------------- */
+
+const eighthRow = document.getElementsByClassName('row8');
+const eighthButton = document.getElementById('row8-button');
+const feedbackEight = document.getElementsByClassName('feedback8');
+
+
+for (let i = 0; i < eighthRow.length; i++) {
+    eighthRow[i].addEventListener("click", function () {
+        checkCircleClicksEight(this, eighthButton, eighthRow);
+    });
+}
+
+function checkCircleClicksEight(element, plug, row) {
+    if (element.getAttribute('disabled') === "false") {
+
+        if (circleList.indexOf(element.id) > -1) {
+
+        } else {
+            circleList.push(element.id);
+            element.setAttribute('disabled', true);
+        }
+        if (circleList.length === row.length) {
+            plug.style.backgroundColor = 'rgb(229, 206, 107)';
+            plug.style.boxShadow = '0 0 5px rgb(3, 0, 58)';
+            plug.addEventListener("click", function () {
+                buttonClick(eighthRow, eighthButton, feedbackEight);
+            });
+            circleList = [];
+        }
+    }
+}
+
 /*--------------------------------------------------------------------------- ROW 9 --------------------------------------------------------------------------- */
+
+const ninthRow = document.getElementsByClassName('row9');
+const ninthButton = document.getElementById('row9-button');
+const feedbackNine = document.getElementsByClassName('feedback9');
+
+
+for (let i = 0; i < ninthRow.length; i++) {
+    ninthRow[i].addEventListener("click", function () {
+        checkCircleClicksNine(this, ninthButton, ninthRow);
+    });
+}
+
+function checkCircleClicksNine(element, plug, row) {
+    if (element.getAttribute('disabled') === "false") {
+
+        if (circleList.indexOf(element.id) > -1) {
+
+        } else {
+            circleList.push(element.id);
+            element.setAttribute('disabled', true);
+        }
+        if (circleList.length === row.length) {
+            plug.style.backgroundColor = 'rgb(229, 206, 107)';
+            plug.style.boxShadow = '0 0 5px rgb(3, 0, 58)';
+            plug.addEventListener("click", function () {
+                buttonClick(ninthRow, ninthButton, feedbackNine);
+            });
+            circleList = [];
+        }
+    }
+}
 
 /**
  * Adds 1 to the current win score
