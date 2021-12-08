@@ -63,6 +63,18 @@ function hasDuplicates(array) {
 }
 
 /**
+ * Removes duplicate values from an array.
+ * Used to check how many rows in the game were used based on buttons clicked.
+ * @param {*} value 
+ * @param {*} index 
+ * @param {*} self 
+ * @returns 
+ */
+function removeDuplicates(value, index, self) {
+    return self.indexOf(value) === index;
+}
+
+/**
  * Submits the user's 'secret code' checks their answer and returns feedback based on which colours were correct and/or in the correct position.
  * When all colours match the computer's 'secret code' and have the correct position, the lights will 'turn on'.
  * @param {*} row 
@@ -83,7 +95,6 @@ function buttonClick(row, plug, reply) {
         for (let i = 0; i < row.length; i++) {
             row[i].removeEventListener("click", changeColor);
         }
-        plug.removeEventListener("click", buttonClick);
     }
 
     if (userAnswer[0] === correctAnswer[0]) {
@@ -125,16 +136,30 @@ function buttonClick(row, plug, reply) {
         reply[i].style.backgroundColor = feedback[i];
     }
 
+    console.log(plug.id + ' was clicked!');
+    wrongAnswer.push(plug.id);
+    const wrongAnswerNoDuplicates = wrongAnswer.filter(removeDuplicates);
+    console.log(wrongAnswerNoDuplicates);
+
     const lights = document.getElementsByClassName('fa-lightbulb');
 
     if (feedback[0] === 'rgb(255, 0, 0)' && feedback[1] === 'rgb(255, 0, 0)' && feedback[2] === 'rgb(255, 0, 0)' && feedback[3] === 'rgb(255, 0, 0)') {
         for (let i = 0; i < lights.length; i++) {
             lights[i].style.color = correctAnswer[i];
         }
+        if (wrongAnswerNoDuplicates.length < sessionStorage.getItem("highScore")) {
+            sessionStorage.setItem("highScore", wrongAnswerNoDuplicates.length);
+            document.getElementById("high-score").innerText = sessionStorage.getItem("highScore");
+        }
         calculateWins();
         setTimeout(function () {
             location.reload()
-        }, 5000);
+        }, 7000);
+    }
+
+    if ((feedback[0] !== 'rgb(255, 0, 0)' || feedback[1] !== 'rgb(255, 0, 0)' || feedback[2] !== 'rgb(255, 0, 0)' || feedback[3] !== 'rgb(255, 0, 0)') &&
+        wrongAnswerNoDuplicates.length === 9) {
+        addLosses();
     }
 
     userAnswer = [];
@@ -155,6 +180,12 @@ for (let i = 0; i < firstRow.length; i++) {
     });
 }
 
+/**
+ * Checks if four colours have been added before lighting up and activating the corresponding button.
+ * @param {*} element 
+ * @param {*} plug 
+ * @param {*} row 
+ */
 function checkCircleClicks(element, plug, row) {
     if (element.getAttribute('disabled') === "false") {
 
@@ -188,6 +219,12 @@ for (let i = 0; i < secondRow.length; i++) {
     });
 }
 
+/**
+ * Checks if four colours have been added before lighting up and activating the corresponding button.
+ * @param {*} element 
+ * @param {*} plug 
+ * @param {*} row 
+ */
 function checkCircleClicksTwo(element, plug, row) {
     if (element.getAttribute('disabled') === "false") {
 
@@ -221,6 +258,12 @@ for (let i = 0; i < thirdRow.length; i++) {
     });
 }
 
+/**
+ * Checks if four colours have been added before lighting up and activating the corresponding button.
+ * @param {*} element 
+ * @param {*} plug 
+ * @param {*} row 
+ */
 function checkCircleClicksThree(element, plug, row) {
     if (element.getAttribute('disabled') === "false") {
 
@@ -254,6 +297,12 @@ for (let i = 0; i < fourthRow.length; i++) {
     });
 }
 
+/**
+ * Checks if four colours have been added before lighting up and activating the corresponding button.
+ * @param {*} element 
+ * @param {*} plug 
+ * @param {*} row 
+ */
 function checkCircleClicksFour(element, plug, row) {
     if (element.getAttribute('disabled') === "false") {
 
@@ -287,6 +336,12 @@ for (let i = 0; i < fifthRow.length; i++) {
     });
 }
 
+/**
+ * Checks if four colours have been added before lighting up and activating the corresponding button.
+ * @param {*} element 
+ * @param {*} plug 
+ * @param {*} row 
+ */
 function checkCircleClicksFive(element, plug, row) {
     if (element.getAttribute('disabled') === "false") {
 
@@ -320,6 +375,12 @@ for (let i = 0; i < sixthRow.length; i++) {
     });
 }
 
+/**
+ * Checks if four colours have been added before lighting up and activating the corresponding button.
+ * @param {*} element 
+ * @param {*} plug 
+ * @param {*} row 
+ */
 function checkCircleClicksSix(element, plug, row) {
     if (element.getAttribute('disabled') === "false") {
 
@@ -353,6 +414,12 @@ for (let i = 0; i < seventhRow.length; i++) {
     });
 }
 
+/**
+ * Checks if four colours have been added before lighting up and activating the corresponding button.
+ * @param {*} element 
+ * @param {*} plug 
+ * @param {*} row 
+ */
 function checkCircleClicksSeven(element, plug, row) {
     if (element.getAttribute('disabled') === "false") {
 
@@ -386,6 +453,12 @@ for (let i = 0; i < eighthRow.length; i++) {
     });
 }
 
+/**
+ * Checks if four colours have been added before lighting up and activating the corresponding button.
+ * @param {*} element 
+ * @param {*} plug 
+ * @param {*} row 
+ */
 function checkCircleClicksEight(element, plug, row) {
     if (element.getAttribute('disabled') === "false") {
 
@@ -419,6 +492,12 @@ for (let i = 0; i < ninthRow.length; i++) {
     });
 }
 
+/**
+ * Checks if four colours have been added before lighting up and activating the corresponding button.
+ * @param {*} element 
+ * @param {*} plug 
+ * @param {*} row 
+ */
 function checkCircleClicksNine(element, plug, row) {
     if (element.getAttribute('disabled') === "false") {
 
@@ -439,6 +518,8 @@ function checkCircleClicksNine(element, plug, row) {
     }
 }
 
+/*--------------------------------------------------------------------------- Scoring --------------------------------------------------------------------------- */
+
 /**
  * Adds 1 to the current win score
  */
@@ -447,11 +528,39 @@ function calculateWins() {
     if (sessionStorage.wins) {
         sessionStorage.wins = Number(sessionStorage.wins) + 1;
     } else {
-        sessionStorage.wins = 0
+        sessionStorage.wins = 1
     }
     document.getElementById('win').innerText = sessionStorage.wins;
 }
 
+/**
+ * Adds 1 to the current loss score
+ */
+function addLosses() {
+
+    if (sessionStorage.loss) {
+        sessionStorage.loss = Number(sessionStorage.loss) + 1;
+    } else {
+        sessionStorage.loss = 1
+    }
+    document.getElementById('loss').innerText = sessionStorage.loss;
+}
+
+/**
+ * Sets starting high score to infinity to make sure the high-score score-keeping works
+ */
+function setHighScore() {
+    if (sessionStorage.getItem("highScore") === undefined) {
+        sessionStorage.setItem("highScore", Infinity);
+    } else {
+        document.getElementById('high-score').innerText = sessionStorage.getItem("highScore");
+    }
+}
+
 document.getElementById('win').innerText = sessionStorage.wins;
+document.getElementById('loss').innerText = sessionStorage.loss;
+document.getElementById('high-score').innerText = sessionStorage.getItem("highScore");
+
+const wrongAnswer = [];
 
 console.log(correctAnswer);
