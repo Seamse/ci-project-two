@@ -63,20 +63,9 @@ function hasDuplicates(array) {
 }
 
 /**
- * Removes duplicate values from an array.
- * Used to check how many rows in the game were used based on buttons clicked.
- * @param {*} value 
- * @param {*} index 
- * @param {*} self 
- * @returns 
- */
-function removeDuplicates(value, index, self) {
-    return self.indexOf(value) === index;
-}
-
-/**
  * Submits the user's 'secret code' checks their answer and returns feedback based on which colours were correct and/or in the correct position.
- * When all colours match the computer's 'secret code' and have the correct position, the lights will 'turn on'.
+ * When all colours match the computer's 'secret code' and have the correct position, the lights will 'turn on' and the game will restart.
+ * When all 9 rows have been used but the computer's 'secret code' hasn't been guessed the user has lost and the game will reset.
  * @param {*} row 
  * @param {*} plug 
  * @param {*} reply 
@@ -137,9 +126,8 @@ function buttonClick(row, plug, reply) {
     }
 
     console.log(plug.id + ' was clicked!');
-    wrongAnswer.push(plug.id);
-    const wrongAnswerNoDuplicates = wrongAnswer.filter(removeDuplicates);
-    console.log(wrongAnswerNoDuplicates);
+    incrementCount();
+    plug.disabled = true;
 
     const lights = document.getElementsByClassName('fa-lightbulb');
 
@@ -147,19 +135,25 @@ function buttonClick(row, plug, reply) {
         for (let i = 0; i < lights.length; i++) {
             lights[i].style.color = correctAnswer[i];
         }
-        if (wrongAnswerNoDuplicates.length < sessionStorage.getItem("highScore")) {
-            sessionStorage.setItem("highScore", wrongAnswerNoDuplicates.length);
+
+        sessionStorage.setItem("highScore", 10);
+        if (clickCount <= sessionStorage.getItem("highScore")) {
+            sessionStorage.setItem("highScore", clickCount);
             document.getElementById("high-score").innerText = sessionStorage.getItem("highScore");
         }
+
         calculateWins();
         setTimeout(function () {
             location.reload()
-        }, 7000);
+        }, 6000);
     }
 
     if ((feedback[0] !== 'rgb(255, 0, 0)' || feedback[1] !== 'rgb(255, 0, 0)' || feedback[2] !== 'rgb(255, 0, 0)' || feedback[3] !== 'rgb(255, 0, 0)') &&
-        wrongAnswerNoDuplicates.length === 9) {
+        clickCount === 9) {
         addLosses();
+        setTimeout(function () {
+            location.reload()
+        }, 3000);
     }
 
     userAnswer = [];
@@ -181,7 +175,7 @@ for (let i = 0; i < firstRow.length; i++) {
 }
 
 /**
- * Checks if four colours have been added before lighting up and activating the corresponding button.
+ * Checks if four colours have been added before lighting up and activating the button.
  * @param {*} element 
  * @param {*} plug 
  * @param {*} row 
@@ -220,7 +214,7 @@ for (let i = 0; i < secondRow.length; i++) {
 }
 
 /**
- * Checks if four colours have been added before lighting up and activating the corresponding button.
+ * Checks if four colours have been added before lighting up and activating the button.
  * @param {*} element 
  * @param {*} plug 
  * @param {*} row 
@@ -259,7 +253,7 @@ for (let i = 0; i < thirdRow.length; i++) {
 }
 
 /**
- * Checks if four colours have been added before lighting up and activating the corresponding button.
+ * Checks if four colours have been added before lighting up and activating the button.
  * @param {*} element 
  * @param {*} plug 
  * @param {*} row 
@@ -298,7 +292,7 @@ for (let i = 0; i < fourthRow.length; i++) {
 }
 
 /**
- * Checks if four colours have been added before lighting up and activating the corresponding button.
+ * Checks if four colours have been added before lighting up and activating the button.
  * @param {*} element 
  * @param {*} plug 
  * @param {*} row 
@@ -337,7 +331,7 @@ for (let i = 0; i < fifthRow.length; i++) {
 }
 
 /**
- * Checks if four colours have been added before lighting up and activating the corresponding button.
+ * Checks if four colours have been added before lighting up and activating the button.
  * @param {*} element 
  * @param {*} plug 
  * @param {*} row 
@@ -376,7 +370,7 @@ for (let i = 0; i < sixthRow.length; i++) {
 }
 
 /**
- * Checks if four colours have been added before lighting up and activating the corresponding button.
+ * Checks if four colours have been added before lighting up and activating the button.
  * @param {*} element 
  * @param {*} plug 
  * @param {*} row 
@@ -415,7 +409,7 @@ for (let i = 0; i < seventhRow.length; i++) {
 }
 
 /**
- * Checks if four colours have been added before lighting up and activating the corresponding button.
+ * Checks if four colours have been added before lighting up and activating the button.
  * @param {*} element 
  * @param {*} plug 
  * @param {*} row 
@@ -454,7 +448,7 @@ for (let i = 0; i < eighthRow.length; i++) {
 }
 
 /**
- * Checks if four colours have been added before lighting up and activating the corresponding button.
+ * Checks if four colours have been added before lighting up and activating the button.
  * @param {*} element 
  * @param {*} plug 
  * @param {*} row 
@@ -493,7 +487,7 @@ for (let i = 0; i < ninthRow.length; i++) {
 }
 
 /**
- * Checks if four colours have been added before lighting up and activating the corresponding button.
+ * Checks if four colours have been added before lighting up and activating the button.
  * @param {*} element 
  * @param {*} plug 
  * @param {*} row 
@@ -519,6 +513,8 @@ function checkCircleClicksNine(element, plug, row) {
 }
 
 /*--------------------------------------------------------------------------- Scoring --------------------------------------------------------------------------- */
+
+let clickCount = 0;
 
 /**
  * Adds 1 to the current win score
@@ -546,21 +542,16 @@ function addLosses() {
     document.getElementById('loss').innerText = sessionStorage.loss;
 }
 
-/**
- * Sets starting high score to infinity to make sure the high-score score-keeping works
- */
-function setHighScore() {
-    if (sessionStorage.getItem("highScore") === undefined) {
-        sessionStorage.setItem("highScore", Infinity);
-    } else {
-        document.getElementById('high-score').innerText = sessionStorage.getItem("highScore");
-    }
+function incrementCount() {
+
+    let oldCount = parseInt(clickCount);
+    clickCount = ++oldCount;
+    console.log(clickCount);
+
 }
 
 document.getElementById('win').innerText = sessionStorage.wins;
 document.getElementById('loss').innerText = sessionStorage.loss;
 document.getElementById('high-score').innerText = sessionStorage.getItem("highScore");
-
-const wrongAnswer = [];
 
 console.log(correctAnswer);
