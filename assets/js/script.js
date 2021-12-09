@@ -119,9 +119,14 @@ function buttonClick(row, plug, reply) {
 
     shuffle(feedback);
 
+
+
     for (let i = 0; i < reply.length; i++) {
+
         reply[i].style.backgroundColor = feedback[i];
+
     }
+
 
     incrementCount();
     plug.disabled = true;
@@ -133,8 +138,12 @@ function buttonClick(row, plug, reply) {
             lights[i].style.color = correctAnswer[i];
         }
 
-        sessionStorage.setItem("highScore", 10);
-        if (clickCount <= sessionStorage.getItem("highScore")) {
+        winSound();
+
+        if (sessionStorage.getItem("highScore") === null) {
+            sessionStorage.setItem("highScore", 10);
+        }
+        if (clickCount < sessionStorage.getItem("highScore")) {
             sessionStorage.setItem("highScore", clickCount);
             document.getElementById("high-score").innerText = sessionStorage.getItem("highScore");
         }
@@ -146,8 +155,16 @@ function buttonClick(row, plug, reply) {
     }
 
     if ((feedback[0] !== 'rgb(255, 0, 0)' || feedback[1] !== 'rgb(255, 0, 0)' || feedback[2] !== 'rgb(255, 0, 0)' || feedback[3] !== 'rgb(255, 0, 0)') &&
+        clickCount < 9) {
+        wrongGuessSound();
+    }
+
+    if ((feedback[0] !== 'rgb(255, 0, 0)' || feedback[1] !== 'rgb(255, 0, 0)' || feedback[2] !== 'rgb(255, 0, 0)' || feedback[3] !== 'rgb(255, 0, 0)') &&
         clickCount === 9) {
+
+        loseSound();
         addLosses();
+
         setTimeout(function () {
             location.reload();
         }, 3000);
@@ -561,3 +578,21 @@ if (sessionStorage.loss === undefined) {
 }
 
 document.getElementById('high-score').innerText = sessionStorage.getItem("highScore");
+
+function winSound() {
+    let audio = new Audio('../assets/audio/applause.wav');
+    audio.loop = false;
+    audio.play();
+}
+
+function loseSound() {
+    let audio = new Audio('../assets/audio/lose.wav');
+    audio.loop = false;
+    audio.play();
+}
+
+function wrongGuessSound() {
+    let audio = new Audio('../assets/audio/incorrect.wav');
+    audio.loop = false;
+    audio.play();
+}
