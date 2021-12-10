@@ -20,6 +20,7 @@ As there is only one page a navigation menu has not been added. To still be able
 
 ### Design  
 * Colour Scheme  
+
 ![Image of the used colour scheme](assets/images/colors.jpg)
 <br>  
 
@@ -28,6 +29,7 @@ All text throughout the page uses the **Open Sans Condensed** font. The fontstyl
 <br>
 
 * Wireframes  
+
 ![Webpage wireframe](assets/images/webpage_wireframe.jpg)  
 <br>  
 
