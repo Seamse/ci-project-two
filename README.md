@@ -29,7 +29,8 @@ All text throughout the page uses the **Open Sans Condensed** font. The fontstyl
 
 * Wireframes  
 ![Webpage wireframe](assets/images/webpage_wireframe.jpg)  
-<br>
+<br>  
+
 ![Mobile wireframe](assets/images/mobile_wireframe.jpg)  
 <br>  
 
