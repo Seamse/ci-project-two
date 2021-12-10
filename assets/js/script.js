@@ -579,18 +579,27 @@ if (sessionStorage.loss === undefined) {
 
 document.getElementById('high-score').innerText = sessionStorage.getItem("highScore");
 
+/**
+ * Adds a sound effect when the game has been won
+ */
 function winSound() {
     let audio = new Audio('../assets/audio/applause.wav');
     audio.loop = false;
     audio.play();
 }
 
+/**
+ * Adds a sound effect when the game has been lost
+ */
 function loseSound() {
     let audio = new Audio('../assets/audio/lose.wav');
     audio.loop = false;
     audio.play();
 }
 
+/**
+ * Adds a sound effect when the player guessed incorrectly on a single row
+ */
 function wrongGuessSound() {
     let audio = new Audio('../assets/audio/incorrect.wav');
     audio.loop = false;
