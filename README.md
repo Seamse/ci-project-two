@@ -1,10 +1,42 @@
 # Light 'm Up!
-**Light 'm Up!** is a browser game version of the board game [Mastermind](https://en.wikipedia.org/wiki/Mastermind_(board_game)).  
+[Light 'm Up!](https://seamse.github.io/ci-project-two/) is a browser game version of the board game [Mastermind](https://en.wikipedia.org/wiki/Mastermind_(board_game)).  
 The player is required to guess a four color code (using six different colors) within a set amount of attempts.  
 Rather than simply showing the correct code when the player wins, the lightbulbs at the top turn on in the code's respective colors.  
 The game is intended for ages 8 and up.  
 <br>
 ![website on different devices](assets/images/responsive.jpg)
+
+## UX Design  
+### User stories  
+* First time visitor goals  
+    * For a first time visitor the site's purpose needs to be easily understood. The game needs to be clearly visible and any reading required regarding how to play should be concise and to the point.  
+
+* Returning visitor goals  
+    * A returning visitor would simply want to play the game and perhaps aim to beat their high score. Any unnecessary additions such as text regarding the rules of the game should not be visible in a distracting way.  
+
+### Structure  
+The game is meant to be clean and simple. The page is therefore only a single page and scrolling will only be required on smaller screen sizes.  
+As there is only one page a navigation menu has not been added. To still be able to explain the game to new players without sacrificing simplicity, the basic rules have been described shortly in the footer.  
+
+### Design  
+#### Colour Scheme  
+
+![Image of the used colour scheme](assets/images/colors.jpg)
+<br>  
+
+#### Typography  
+
+All text throughout the page uses the **Open Sans Condensed** font. The fontstyle is straight and clean, adding a somewhat industrial feel which fits with the theme of lighting up old fashioned lightbulbs.  
+
+#### Wireframes  
+
+![Webpage wireframe](assets/images/webpage_wireframe.jpg)  
+<br>
+![Mobile wireframe](assets/images/mobile_wireframe.jpg)  
+
+#### Differences to original design  
+
+In the original design the game had a single submit button, the text in the footer was positioned differently and the score area had a solid border. These were changed in the final design mostly to keep the website's look cleaner and more aesthetically pleasing. Having a button per row, rather than a single button at the bottom of the board, also makes it easier for the user to click continuously rather than having to move down each time to submit their answer.
 
 ## Features
 
@@ -38,11 +70,6 @@ The game is intended for ages 8 and up.
   
 <br>
 
-* Colour Scheme  
-
-![Image of the used colour scheme](assets/images/colors.jpg)
-<br>  
-
 * Game won example  
 
 ![Image of the game in action / won](assets/images/action.jpg)  
@@ -57,6 +84,18 @@ The game is intended for ages 8 and up.
 
 * A possible future feature could be a multiplayer version where two players can play the game together, rather than play against the computer.  
 <br>
+
+## Technologies used  
+* HTML5  
+* CSS3  
+* Javascript  
+* [GitHub](https://www.github.com)  
+* [Gitpod](https://www.gitpod.io)  
+* [Chrome developer tools](https://developer.chrome.com/docs/devtools/)  
+* [Balsamiq wireframes](https://balsamiq.com/wireframes/)  
+* [Google fonts](https://fonts.google.com/)  
+* [Favicon](https://favicon.io/)  
+* [Colormind](http://colormind.io/)  
 
 ## Testing  
 
@@ -135,13 +174,7 @@ The live link can be found here: [Light 'm Up!](https://seamse.github.io/ci-proj
 ### Special thanks  
 * A special thanks to the slack channel lead Jack Conroy for taking the time to help me think out loud and giving me inspiration when I wasn't certain how to go about things.
 * And a special thanks to my mentor Spencer Barriball for grabbing me by the scruff of the neck when I was being too convoluted.  
-<br> 
 
-## Bonus  
-### Original wireframes:  
-![Webpage wireframe](assets/images/webpage_wireframe.jpg)  
-<br>
-![Mobile wireframe](assets/images/mobile_wireframe.jpg)
 
 
 
