@@ -62,17 +62,14 @@ The game is intended for ages 8 and up.
 
 * I tested that the game works in different browsers: Chrome, Microsoft Edge, Safari  
 * I confirmed that this project is responsive, looks good and functions on all standard screen sizes using the devtools device toolbar and double-checking on my own iphone SE, ipad, laptop and the office computer.  
-<br>  
 
 ### Validator testing   
 
 * HTML  
-    * No errors were returned when passing through the official [W3C validator](https://validator.w3.org/)  
-<br>  
+    * No errors were returned when passing through the official [W3C validator](https://validator.w3.org/)    
 
 * CSS
     * No errors were returned when passing through the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/)  
-<br>
 
 * Javascript
     * No errors were returned when passing through the official [Jshint validator](https://jshint.com/)  
@@ -81,7 +78,6 @@ The game is intended for ages 8 and up.
         Function with the largest signature take 3 arguments, while the median is 0.  
         Largest function has 48 statements in it, while the median is 1.  
         The most complex function has a cyclomatic complexity value of 38 while the median is 1.  
-<br>  
 
 * Accessibility
     * I confirmed that the colors and fonts chosen are easy to read and accessible by running it through Lighthouse in devtools.
@@ -94,17 +90,13 @@ The game is intended for ages 8 and up.
     * The plug button could be clicked before the player had entered a color code to the board. Should the player accidentally click the button before being ready, the game malfunctioned. The bug was solved by adding the buttonclick event listener function inside the function that checks if all four circles have had a color added to them. This ensures the button isn't clickable before all circles have been filled.  
     However, since the buttonclick function requires external parameters and the circle checking is done via a loop, this does cause a warning in the [Jshint validator](https://jshint.com/):  
     *Functions declared within loops referencing an outer scoped variable may lead to confusing semantics.*  
-    As I did need to make sure the button isn't activated before all colors have been set and the game works well, I decided to ignore this warning in this scenario.  
-<br>  
+    As I did need to make sure the button isn't activated before all colors have been set and the game works well, I decided to ignore this warning in this scenario.    
 
     * Although the rules in the footer state that each color may only be used once and the computer only generated a four color code made up of four different colors, the computer didn't care if a player would enter duplicates and happily returned feedback on it. For example: should the player enter the same color four times and this color was present in the computer's generated code, the computer's feedback would be *all four colors are correct but only one is in the correct position*. The bug was solved by adding an if/else statement inside the buttonclick function, making sure that the computer giving feedback isn't activated and a warning is given in the form of an alert when duplicate colors are present.  
-<br>  
 
     * To make it more obvious that the plug button is ready to be clicked, it is set to change color and appear to light up when a color code has been entered to the board. Unfortunately the button kept lighting up immediately whenever one circle on the board was clicked, rather than after all four had been clicked. This was solved by creating an empty array and pushing each circle's ID into the array when that circle has been clicked, the button now only lights up when all four IDs are present. In order to prevent one ID from being pushed into the array four times the divisions were given a data-disabled attribute through which the ID pushing could be de-activated after they'd been clicked once.  
-<br>  
 
     * The high score was tricky, it should only change if a player guessed the code quicker than they did the previous tries. This means the new game is compared to the current high score and then the high score either remains the same or changes if the new game was finished quicker. When the game first starts though, the high score doesn't have a value yet, which meant the comparison would always come up as *new game took longer* and the high score wouldn't set. This was fixed by adding an if statement measuring if the current high score is set to null and then setting it to 10 if that is the case.  
-<br>  
 
     * Keeping the wins, losses and high scores while resetting the game. As the game restarts by refreshing the page, originally the values added to wins / losses / high score would reset as well. This was solved by adding sessionStorage to the scoring.  
 <br>  
@@ -136,21 +128,19 @@ The live link can be found here: [Light 'm Up!](https://seamse.github.io/ci-proj
     * [Remove event listeners](https://stackoverflow.com/questions/4402287/javascript-remove-event-listener)  
     * [Reload with delay](https://stackoverflow.com/questions/39638903/js-location-reload-with-delay-after-function-executed)  
     * [Session storage](https://www.w3schools.com/jsref/prop_win_sessionstorage.asp)  
-<br>
 
 ### Media  
 * The sound effects were taken from [Mixkit](https://mixkit.co/free-sound-effects/game/).  
-<br>
 
 ### Special thanks  
 * A special thanks to the slack channel lead Jack Conroy for taking the time to help me think out loud and giving me inspiration when I wasn't certain how to go about things.
 * And a special thanks to my mentor Spencer Barriball for grabbing me by the scruff of the neck when I was being too convoluted.  
-<br>  
+<br> 
 
 ## Bonus  
 ### Original wireframes:  
 ![Webpage wireframe](assets/images/webpage_wireframe.jpg)  
-<br>  
+<br>
 ![Mobile wireframe](assets/images/mobile_wireframe.jpg)
 
 
