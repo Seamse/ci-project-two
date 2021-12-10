@@ -104,21 +104,22 @@ The footer contains a basic explanation of what is required from the player and 
 ### Validator testing   
 
 * HTML  
-    * No errors were returned when passing through the official [W3C validator](https://validator.w3.org/)    
+No errors were returned when passing through the official [W3C validator](https://validator.w3.org/)    
 
-* CSS
-    * No errors were returned when passing through the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/)  
+* CSS  
+No errors were returned when passing through the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/)  
 
-* Javascript
-    * No errors were returned when passing through the official [Jshint validator](https://jshint.com/)  
-        * The following metrics were returned:  
+* Javascript  
+No errors were returned when passing through the official [Jshint validator](https://jshint.com/)  
+    * The following metrics were returned:  
         There are 39 functions in this file.  
         Function with the largest signature take 3 arguments, while the median is 0.  
         Largest function has 48 statements in it, while the median is 1.  
         The most complex function has a cyclomatic complexity value of 38 while the median is 1.  
+<br>
 
-* Accessibility
-    * I confirmed that the colors and fonts chosen are easy to read and accessible by running it through Lighthouse in devtools.
+* Accessibility  
+I confirmed that the colors and fonts chosen are easy to read and accessible by running it through Lighthouse in devtools.
 
 ![Image of Lighthouse result](assets/images/lighthouse.jpg)  
 <br>  
