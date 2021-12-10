@@ -19,52 +19,48 @@ The game is meant to be clean and simple. The page is therefore only a single pa
 As there is only one page a navigation menu has not been added. To still be able to explain the game to new players without sacrificing simplicity, the basic rules have been described shortly in the footer.  
 
 ### Design  
-#### Colour Scheme  
-
+* Colour Scheme  
 ![Image of the used colour scheme](assets/images/colors.jpg)
 <br>  
 
-#### Typography  
-
+* Typography  
 All text throughout the page uses the **Open Sans Condensed** font. The fontstyle is straight and clean, adding a somewhat industrial feel which fits with the theme of lighting up old fashioned lightbulbs.  
+<br>
 
-#### Wireframes  
-
+* Wireframes  
 ![Webpage wireframe](assets/images/webpage_wireframe.jpg)  
 <br>
 ![Mobile wireframe](assets/images/mobile_wireframe.jpg)  
+<br>  
 
-#### Differences to original design  
-
+* Differences to original design  
 In the original design the game had a single submit button, the text in the footer was positioned differently and the score area had a solid border. These were changed in the final design mostly to keep the website's look cleaner and more aesthetically pleasing. Having a button per row, rather than a single button at the bottom of the board, also makes it easier for the user to click continuously rather than having to move down each time to submit their answer.
 
 ## Features
 
 ### Existing features
 
-<br>
-
-* Heading and game title
-    * The head of the page contains the game name and the four lightbulbs the player is meant to turn on by playing.  
+* Heading and game title  
+The head of the page contains the game name and the four lightbulbs the player is meant to turn on by playing.  
       
 ![Image of the head of the page](assets/images/head.jpg)
 
-* Game board
-    * The game board area is where the player can insert their own color choices and check if they are correct.
-    * They can test their code by plugging in the plug (a.k.a. clicking the plug button) to see if the lights turn on.
+* Game board  
+The game board area is where the player can insert their own color choices and check if they are correct.  
+They can test their code by plugging in the plug (a.k.a. clicking the plug button) to see if the lights turn on.
   
 ![Image of the game board](assets/images/board.jpg)
   
-* Score area
-    * The score area keeps count of the player's wins, losses and their high score.
-    * The player wins by guessing the color code correctly (all four colors must be accurate and in the right position).
-    * The player loses if the correct code hasn't been guessed within the available attempts on the board.
-    * The high score is the shortest amount of attempts (board rows) it has taken the player to guess the code correctly.
+* Score area  
+The score area keeps count of the player's wins, losses and their high score.  
+The player wins by guessing the color code correctly (all four colors must be accurate and in the right position).  
+The player loses if the correct code hasn't been guessed within the available attempts on the board.  
+The high score is the shortest amount of attempts (board rows) it has taken the player to guess the code correctly.  
 
 ![Image of the score area](assets/images/score.jpg)  
   
-* Footer
-    * The footer contains a basic explanation of what is required from the player and how to understand the computer's feedback.
+* Footer  
+The footer contains a basic explanation of what is required from the player and how to understand the computer's feedback.  
 
 ![Image of the footer area](assets/images/footer.jpg)  
   
