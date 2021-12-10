@@ -1,5 +1,5 @@
 # Light 'm Up!
-**Light 'm Up!** is a browser game version of the boardgame [Mastermind](https://en.wikipedia.org/wiki/Mastermind_(board_game)).  
+**Light 'm Up!** is a browser game version of the board game [Mastermind](https://en.wikipedia.org/wiki/Mastermind_(board_game)).  
 The player is required to guess a four color code (using six different colors) within a set amount of attempts.  
 Rather than simply showing the correct code when the player wins, the lightbulbs at the top turn on in the code's respective colors.  
 The game is intended for ages 8 and up.  
@@ -46,6 +46,11 @@ The game is intended for ages 8 and up.
 * Game won example  
 
 ![Image of the game in action / won](assets/images/action.jpg)  
+<br>  
+
+* 404 page 
+
+![Image of the 404 page](assets/images/404page.jpg)  
 <br>  
 
 ### Potential future features  
@@ -139,7 +144,14 @@ The live link can be found here: [Light 'm Up!](https://seamse.github.io/ci-proj
 
 ### Special thanks  
 * A special thanks to the slack channel lead Jack Conroy for taking the time to help me think out loud and giving me inspiration when I wasn't certain how to go about things.
-* And a special thanks to my mentor Spencer Barriball for grabbing me by the scruff of the neck when I was being too convoluted.
+* And a special thanks to my mentor Spencer Barriball for grabbing me by the scruff of the neck when I was being too convoluted.  
+<br>  
+
+## Bonus  
+### Original wireframes:  
+![Webpage wireframe](assets/images/webpage_wireframe.jpg)  
+<br>  
+![Mobile wireframe](assets/images/mobile_wireframe.jpg)
 
 
 
